@@ -1,0 +1,19 @@
+{
+  "uchiwa": {
+    "user": "admin",
+    "pass": "supersecret",
+    "refresh": 5,
+    "host": "0.0.0.0",
+    "port": 3000
+  },
+  "sensu": [
+    {
+      "name": "Sensu",
+      "host": "127.0.0.1",
+      "url": "http://127.0.0.1:4567",
+      "path": "",
+      "ssl": false,
+      "timeout": 5
+    }
+  ]
+}

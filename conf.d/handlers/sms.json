@@ -1,0 +1,8 @@
+{
+  "handlers": {
+    "sms": {
+      "type": "pipe",
+      "command": "/etc/sensu/handlers/send_sms.py"
+    }
+  }
+}

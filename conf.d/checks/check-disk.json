@@ -1,0 +1,16 @@
+{
+  "checks": {
+    "check-disk": {
+      "command": "/opt/sensu/embedded/bin/check-disk-usage.rb -p /snap",
+      "subscribers": ["test"],
+      "handler": "mailer",
+      "interval": 60
+    },
+    "check-apache2": {
+      "command": "/etc/sensu/checks/check_apache2.bash",
+      "subscribers": ["test"],
+      "handler": "sms",
+      "interval": 60
+    }
+  }
+}

@@ -1,0 +1,41 @@
+#!/usr/bin/python3
+# Import smtplib for the actual sending function
+import smtplib
+import json
+import sys
+import time
+json_text=json.load(sys.stdin)
+exe_date=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(json_text["check"]["executed"]))
+exec_status=json_text["check"]["status"]
+if ( exec_status == 2 ):
+  status="FAILURE"
+else:
+  status="SUCCESS"
+
+body_txt="Report from sensu client '" + \
+json_text["client"]["name"]+ \
+"':\n\nCheck name: " +\
+json_text["check"]["name"] +\
+"\nExecution time: " +\
+exe_date + "\nCheck message:" +\
+json_text["check"]["output"] +\
+"\nCheck status: " + str(exec_status) + "(" + status + ")"
+ 
+# Import the email modules we'll need
+from email.mime.text import MIMEText
+
+msg = MIMEText(body_txt)
+
+# me == the sender's email address
+# you == the recipient's email address
+msg['Subject'] = 'Sensu alert from client ' + json_text["client"]["name"]
+msg['From'] = "sensu_server@karalov.com"
+msg['To'] = "4254458236@tmomail.net"
+#msg['To'] = "karalov.d@gmail.com"
+
+
+# Send the message via our own SMTP server.
+s = smtplib.SMTP('localhost')
+s.send_message(msg)
+s.quit()
+

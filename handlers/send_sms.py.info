@@ -1,0 +1,9 @@
+#!/opt/sensu/embedded/bin/ruby
+require 'sensu-handler'
+class Show < Sensu::Handler
+  def handle
+    eventdata=@event.inspect
+    puts "Settings: " + settings.to_hash.inspect
+    puts 'Event: ' + eventdata[":client"]
+  end
+end

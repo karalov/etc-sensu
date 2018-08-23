@@ -1,0 +1,10 @@
+{
+  "mailer": {
+    "admin_gui": "http://localhost:3000/",
+    "mail_from": "sensu@localhost",
+    "mail_to": "karalov.d@gmail.com",
+    "smtp_address": "localhost",
+    "smtp_port": "25",
+    "smtp_domain": "localhost"
+  }
+}
